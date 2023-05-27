@@ -13,4 +13,4 @@ jobs:
           echo "process"
           date
           uname -a
-          echo ${{ inputs.ref }}
+          echo ${{ github.ref }}
