@@ -12,5 +12,6 @@ jobs:
         run: |
           echo "process"
           date
+	  date
           uname -a
           echo ${{ github.ref }}
