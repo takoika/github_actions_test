@@ -8,8 +8,8 @@ jobs:
   process:
     runs-on: ubuntu-latest
     steps:
-      name: process
-      run: |
-        echo "process"
-        date
-        uname -a
+      - name: process
+        run: |
+          echo "process"
+          date
+          uname -a
