@@ -1,0 +1,27 @@
+name: test
+
+on:
+  workflow_dispatch:
+  
+
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+      url: www.google.com
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: process
+        run: |
+          echo "process"
+          date
+          date
+          uname -a
+          echo ${{ github.ref }}
+          git branch
+
