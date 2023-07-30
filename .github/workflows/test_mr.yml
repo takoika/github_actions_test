@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-child:
-    uses: ./.github/workflows/child_workflow.yml@23f824d8f02862b57c24e951684e33c3d7bcc0ea
+    uses: ./.github/workflows/child_workflow.yml
 
   main-job:
     needs: call-child
