@@ -1,0 +1,17 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  call-child:
+    uses: ./.github/workflows/child_workflow.yml
+
+  main-job:
+    needs: call-child
+    runs-on: ubuntu-latest
+    steps:
+      - name: main
+        run: echo main
