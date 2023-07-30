@@ -28,7 +28,7 @@ jobs:
           git branch
 
   fail:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     steps:
       - name: fail
         run: exist 1
