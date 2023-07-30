@@ -6,29 +6,12 @@ on:
       - master
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: setup
-        run: echo test
+  call-child:
+    uses: child_workflow.yml
 
-  process:
+  main-job:
+    needs: call-child
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: process
-        run: |
-          echo "process"
-          date
-          date
-          uname -a
-          echo ${{ github.ref }}
-          git branch
-
-  fail:
-    runs-on: ubuntu-latest
-    steps:
-      - name: fail
-        run: exist 1
+      - name: main
+        run: echo main
