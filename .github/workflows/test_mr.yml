@@ -32,6 +32,7 @@ jobs:
       - name: Check PR author and set env var
         id: set-var
         run: |
+              echo ${{ github.event.pull_request.user.login }}
               USER_ENV=$(echo $USER_MAP | jq -r ".\"${{ github.event.pull_request.user.login }}\"")
               if [ -n "$USER_ENV" ]; then
                 echo "::set-output name=user_env::$USER_ENV"
