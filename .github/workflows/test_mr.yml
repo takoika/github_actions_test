@@ -24,8 +24,7 @@ jobs:
     env:
       USER_MAP: |
         {
-                "specific_user1": "ValueForUser1",
-                "specific_user2": "ValueForUser2"
+                "takoika": "vvvv"
         }
       
     steps:
