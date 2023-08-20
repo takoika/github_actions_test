@@ -1,10 +1,5 @@
-name: test
-
 on:
-  push:
-    branches:
-      - master
-
+  workflow_call:
 
 jobs:
   setup:
@@ -15,14 +10,10 @@ jobs:
 
   process:
     runs-on: ubuntu-latest
-    environment:
-      name: prod
-      url: www.google.com
     steps:
       - uses: actions/checkout@v3
         with:
           ref: master
-
       - name: process
         run: |
           echo "process"
@@ -32,3 +23,21 @@ jobs:
           echo ${{ github.ref }}
           git branch
 
+  process2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: process
+        run: |
+          echo "process"
+          date
+          date
+          uname -a
+          echo ${{ github.ref }}
+          git branch  
+
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail
+        run: exit
