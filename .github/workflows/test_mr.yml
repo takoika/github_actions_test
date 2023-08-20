@@ -49,3 +49,4 @@ jobs:
       - name: Use the user-specific env var
         run: |
               echo $USER_SPECIFIC_VALUE
+              echo ${{ needs.set_env_var.outputs.user_specific_env }}
