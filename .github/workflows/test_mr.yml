@@ -39,13 +39,13 @@ jobs:
                 echo "::set-output name=user_env::DefaultValue"
               fi
       
-    use_env_var:
-      needs: set_env_var
-      runs-on: ubuntu-latest
-      env:
-        USER_SPECIFIC_VALUE: ${{ needs.set_env_var.outputs.user_specific_env }}
+  use_env_var:
+    needs: set_env_var
+    runs-on: ubuntu-latest
+    env:
+      USER_SPECIFIC_VALUE: ${{ needs.set_env_var.outputs.user_specific_env }}
       
-      steps:
-        - name: Use the user-specific env var
-          run: |
+    steps:
+      - name: Use the user-specific env var
+        run: |
               echo $USER_SPECIFIC_VALUE
