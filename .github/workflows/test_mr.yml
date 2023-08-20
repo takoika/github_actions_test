@@ -34,7 +34,7 @@ jobs:
               echo ${{ github.event.pull_request.user.login }}
               USER_ENV=$(echo $USER_MAP | jq -r ".\"${{ github.event.pull_request.user.login }}\"")
               if [ -n "$USER_ENV" ]; then
-                echo "ser_env=$USER_ENV">>$GITHUB_OUTPUT 
+                echo "user_env=$USER_ENV">>$GITHUB_OUTPUT 
               else
                 echo "user_env=DefaultValue">>$GITHUB_OUTPUT 
               fi
