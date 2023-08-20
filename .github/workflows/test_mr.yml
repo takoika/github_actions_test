@@ -15,3 +15,37 @@ jobs:
     steps:
       - name: main
         run: echo main
+
+  set_env_var:
+    runs-on: ubuntu-latest
+    outputs:
+      user_specific_env: ${{ steps.set-var.outputs.user_env }}
+          
+    env:
+      USER_MAP: |
+        {
+                "specific_user1": "ValueForUser1",
+                "specific_user2": "ValueForUser2"
+        }
+      
+    steps:
+      - name: Check PR author and set env var
+        id: set-var
+        run: |
+              USER_ENV=$(echo $USER_MAP | jq -r ".\"${{ github.event.pull_request.user.login }}\"")
+              if [ -n "$USER_ENV" ]; then
+                echo "::set-output name=user_env::$USER_ENV"
+              else
+                echo "::set-output name=user_env::DefaultValue"
+              fi
+      
+    use_env_var:
+      needs: set_env_var
+      runs-on: ubuntu-latest
+      env:
+        USER_SPECIFIC_VALUE: ${{ needs.set_env_var.outputs.user_specific_env }}
+      
+      steps:
+        - name: Use the user-specific env var
+          run: |
+              echo $USER_SPECIFIC_VALUE
