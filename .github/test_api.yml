@@ -1,0 +1,14 @@
+name: On Repository Dispatch
+
+on:
+  repository_dispatch:
+    types: [custom-event]  # 任意のイベント名
+
+jobs:
+  run-dispatched:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event payload
+        run: |
+          echo "Event type: ${{ github.event.action }}"
+          echo "Client payload param: ${{ github.event.client_payload.message }}"
