@@ -1,5 +1,5 @@
 name: On Repository Dispatch
-run-name: ${{ github.event.client_payload.message }}
+run-name: ${{ github.event.client_payload.request_id }}
 
 on:
   repository_dispatch:
@@ -12,4 +12,4 @@ jobs:
       - name: Show event payload
         run: |
           echo "Event type: ${{ github.event.action }}"
-          echo "Client payload param: ${{ github.event.client_payload.message }}"
+          echo "Client payload param: ${{ github.event.client_payload.request_id }}"
