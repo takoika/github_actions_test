@@ -1,4 +1,5 @@
 name: On Repository Dispatch
+run-name: ${ {github.event.client_payload.message }}
 
 on:
   repository_dispatch:
